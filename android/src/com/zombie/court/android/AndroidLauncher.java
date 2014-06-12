@@ -12,5 +12,7 @@ public class AndroidLauncher extends AndroidApplication {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		initialize(new ZombieCourt(), config);
+		
+		// test 1 2 3...
 	}
 }
