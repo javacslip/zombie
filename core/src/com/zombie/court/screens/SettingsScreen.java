@@ -1,67 +1,40 @@
 package com.zombie.court.screens;
 
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.zombie.court.ZombieCourt;
 
-public class SettingsScreen implements Screen
+public class SettingsScreen extends AbstractScreen
 {
 	// screen shown to adjust volume, maybe credits, reset data?
 
-	final ZombieCourt game;
-
-	OrthographicCamera camera;
-
-	public SettingsScreen(final ZombieCourt game)
+	public SettingsScreen(ZombieCourt game)
 	{
-		this.game = game;
-
-		camera = new OrthographicCamera();
-		// the last 2 values should be set to whatever resolution we want the
-		// game to have: the Viewport -> check Viewport documentation TODO
-		camera.setToOrtho(false, 800, 480);
-	}
-
-	@Override
-	public void render(float delta)
-	{
-
-	}
-
-	@Override
-	public void resize(int width, int height)
-	{
-
+		super(game);
 	}
 
 	@Override
 	public void show()
 	{
+		super.show();
 
-	}
+		// get the Table
+		Table table = super.getTable();
 
-	@Override
-	public void hide()
-	{
-
-	}
-
-	@Override
-	public void pause()
-	{
-
-	}
-
-	@Override
-	public void resume()
-	{
-
-	}
-
-	@Override
-	public void dispose()
-	{
-
+		// button for navigating to Settings screen
+		TextButton mainMenuButton = new TextButton("Main Menu", getSkin(),
+				"button");
+		mainMenuButton.addListener(new ClickListener()
+		{
+			@Override
+			public void clicked(InputEvent event, float x, float y)
+			{
+				game.setScreen(new MainMenuScreen(game));
+			}
+		});
+		table.add(mainMenuButton).size(300, 50).uniform();
 	}
 
 }

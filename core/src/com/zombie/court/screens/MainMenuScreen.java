@@ -1,86 +1,38 @@
 package com.zombie.court.screens;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.zombie.court.ZombieCourt;
 
-public class MainMenuScreen implements Screen
+public class MainMenuScreen extends AbstractScreen
 {
-	// the screen that will be shown upon application start
 
-	final ZombieCourt game;
-
-	OrthographicCamera camera;
-
-	public MainMenuScreen(final ZombieCourt game)
+	public MainMenuScreen(ZombieCourt game)
 	{
-		this.game = game;
-
-		camera = new OrthographicCamera();
-		// the last 2 values should be set to whatever resolution we want the
-		// game to have: the Viewport -> check Viewport documentation TODO
-		camera.setToOrtho(false, 800, 480);
-	}
-
-	@Override
-	public void render(float delta)
-	{
-
-		// this should check to see if the "start game" button is pressed on the
-		// main menu - tbd
-		if (Gdx.input.isTouched())
-		{
-			// game.setScreen(new GameScreen(game));
-			// dispose();
-		}
-		// checks for a "settings" button press on the main menu - tbd
-		else if (Gdx.input.isButtonPressed(0))
-		{
-			// game.setScreen(new SettingsScreen(game));
-			// dispose();
-		}
-		else
-		{
-			// throw LoggedUncheckedException.... amirite?
-		}
-
-	}
-
-	@Override
-	public void resize(int width, int height)
-	{
-
+		super(game);
 	}
 
 	@Override
 	public void show()
 	{
+		super.show();
 
+		// get the Table
+		Table table = super.getTable();
+
+		// button for navigating to Settings screen
+		TextButton settingsButton = new TextButton("Settings", getSkin(),
+				"button");
+		settingsButton.addListener(new ClickListener()
+		{
+			@Override
+			public void clicked(InputEvent event, float x, float y)
+			{
+				game.setScreen(new SettingsScreen(game));
+			}
+		});
+		table.add(settingsButton).size(300, 50).uniform();
 	}
-
-	@Override
-	public void hide()
-	{
-
-	}
-
-	@Override
-	public void pause()
-	{
-
-	}
-
-	@Override
-	public void resume()
-	{
-
-	}
-
-	@Override
-	public void dispose()
-	{
-
-	}
-
 }
