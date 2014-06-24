@@ -4,12 +4,22 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.zombie.court.screens.MainMenuScreen;
+import com.zombie.court.services.MusicManager;
+import com.zombie.court.services.PlayerManager;
+import com.zombie.court.services.PreferencesManager;
+import com.zombie.court.services.SoundManager;
 
 // entry point into the game
 public class ZombieCourt extends Game
 {
 
 	public static final String LOG = ZombieCourt.class.getSimpleName();
+
+	// services for the game
+	private PreferencesManager prefsMgr;
+	private PlayerManager playerMgr;
+	private MusicManager musicMgr;
+	private SoundManager soundMgr;
 
 	public ZombieCourt()
 	{
@@ -39,8 +49,6 @@ public class ZombieCourt extends Game
 	@Override
 	public void pause()
 	{
-		// process sent to the background: interrupted via call, "home" button,
-		// etc.
 		super.pause();
 	}
 

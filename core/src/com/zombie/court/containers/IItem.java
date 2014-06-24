@@ -1,10 +1,11 @@
 package com.zombie.court.containers;
 
-public interface IItem {
+public interface IItem
+{
 
-	public Integer getDamage();
-	
-	public Integer getDefense();
-	
-	public Integer getValue();
+	public int getDamage();
+
+	public int getDefense();
+
+	public int getValue();
 }
